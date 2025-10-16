@@ -9,7 +9,8 @@ from datetime import timedelta
 import pymysql
 from extensions import db, bcrypt, jwt
 import os
-
+from dotenv import load_dotenv
+load_dotenv() # Carrega as variáveis do arquivo .env
 # ------------------------------
 # INICIALIZAÇÃO DO FLASK E CONFIGURAÇÕES
 # ------------------------------
@@ -19,11 +20,15 @@ app = Flask(__name__)
 pymysql.install_as_MySQLdb()
 
 # Configuração do MySQL com SQLAlchemy
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:bardopastel12152003@localhost/foodback_db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_HOST = os.getenv("DB_HOST")
+DB_NAME = os.getenv("DB_NAME")
+
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}'
 
 # Configuração JWT
-app.config["JWT_SECRET_KEY"] = "super-secret"
+app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY")
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=1)
 
 # ------------------------------
