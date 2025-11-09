@@ -1,4 +1,6 @@
-# Codigo para criar o banco de dados no SQL
+# README
+# Lembrem de atualizar as informações do ".env" antes de executar o codigo.
+# Codigo para criar o banco de dados no SQL:
 
 "CREATE DATABASE foodback_db
   CHARACTER SET utf8mb4
