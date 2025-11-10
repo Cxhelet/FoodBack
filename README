@@ -5,3 +5,8 @@
 "CREATE DATABASE foodback_db
   CHARACTER SET utf8mb4
   COLLATE utf8mb4_unicode_ci;"
+
+#Select para o usuario Admin:
+
+"USE foodback_db;
+SELECT * FROM admin;"
